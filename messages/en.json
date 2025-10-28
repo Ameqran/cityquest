@@ -1,0 +1,41 @@
+{
+  "navbar": {
+    "home": "Home",
+    "missions": "Missions",
+    "rewards": "Rewards",
+    "leaderboard": "Leaderboard",
+    "profile": "Profile",
+    "business": "Business",
+    "admin": "Admin",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "cityPicker": "Select city"
+  },
+  "landing": {
+    "heroTitle": "Discover cities through play",
+    "heroSubtitle": "Complete curated quests, earn points, and unlock local rewards.",
+    "cta": "Start exploring",
+    "dailyMissions": "Daily missions reset at midnight"
+  },
+  "filters": {
+    "category": "Category",
+    "tier": "Tier",
+    "search": "Search"
+  },
+  "tiers": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "toasts": {
+    "missionStarted": "Mission started",
+    "submissionSent": "Submission sent",
+    "redeemed": "Reward redeemed",
+    "loginSuccess": "Welcome back"
+  },
+  "auth": {
+    "title": "Sign in with email",
+    "email": "Email",
+    "submit": "Sign in"
+  }
+}

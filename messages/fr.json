@@ -1,0 +1,41 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "missions": "Missions",
+    "rewards": "Récompenses",
+    "leaderboard": "Classement",
+    "profile": "Profil",
+    "business": "Partenaires",
+    "admin": "Admin",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "cityPicker": "Choisir une ville"
+  },
+  "landing": {
+    "heroTitle": "Découvrez les villes en jouant",
+    "heroSubtitle": "Relevez des quêtes locales, gagnez des points et débloquez des récompenses.",
+    "cta": "Commencer l'aventure",
+    "dailyMissions": "Les missions quotidiennes se réinitialisent à minuit"
+  },
+  "filters": {
+    "category": "Catégorie",
+    "tier": "Difficulté",
+    "search": "Recherche"
+  },
+  "tiers": {
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile"
+  },
+  "toasts": {
+    "missionStarted": "Mission lancée",
+    "submissionSent": "Soumission envoyée",
+    "redeemed": "Récompense utilisée",
+    "loginSuccess": "Bon retour"
+  },
+  "auth": {
+    "title": "Connexion par email",
+    "email": "Email",
+    "submit": "Se connecter"
+  }
+}
