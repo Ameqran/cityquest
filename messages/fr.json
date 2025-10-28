@@ -37,5 +37,22 @@
     "title": "Connexion par email",
     "email": "Email",
     "submit": "Se connecter"
+  },
+  "leaderboard": {
+    "title": "Classements des villes",
+    "subtitle": "Suivez les explorateurs qui font vibrer chaque ville. Filtrez par saison ou découvrez les légendes de tous les temps.",
+    "cityLabel": "Ville",
+    "empty": "Aucun explorateur n'est encore monté dans ce classement. Encouragez votre communauté à lancer des missions !",
+    "activeCity": "Ville suivie",
+    "topExplorer": "Meilleur explorateur",
+    "points": "pts",
+    "cityPicker": "Explorer les villes"
+  },
+  "rewards": {
+    "title": "Débloquez des récompenses locales",
+    "subtitle": "Échangez vos points d'aventure contre des expériences sélectionnées chez nos partenaires CityQuest. Les avantages tournent à chaque saison.",
+    "redeem": "Utiliser la récompense",
+    "insufficient": "Il vous manque encore {points} points pour obtenir cette récompense.",
+    "soldOut": "Cette récompense est actuellement en rupture de stock."
   }
 }

@@ -1,9 +1,17 @@
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
 export const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('rounded-xl border bg-card text-card-foreground shadow-sm', className)} {...props} />
+    <div
+      ref={ref}
+      className={cn(
+        'relative overflow-hidden rounded-3xl border border-white/50 bg-white/80 text-card-foreground shadow-lg backdrop-blur',
+        className
+      )}
+      {...props}
+    />
   )
 );
 Card.displayName = 'Card';

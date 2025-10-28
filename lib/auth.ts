@@ -1,9 +1,9 @@
 import 'server-only';
 
 import { cookies } from 'next/headers';
-import { IronSession, getIronSession } from 'iron-session';
+import { getIronSession } from 'iron-session';
 import { findUserByEmail, createTourist, getStore } from './store';
-import type { Role, User } from './models';
+import type { Role } from './models';
 
 const sessionOptions = {
   password: process.env.SESSION_PASSWORD ?? 'cityquests-demo-secret-please-change',

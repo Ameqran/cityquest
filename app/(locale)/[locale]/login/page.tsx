@@ -29,19 +29,33 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="mx-auto max-w-md space-y-6 rounded-xl border bg-card p-8 shadow-sm">
-      <h1 className="text-2xl font-semibold">Sign in</h1>
-      <form className="space-y-4" onSubmit={handleSubmit}>
+    <div className="mx-auto max-w-lg space-y-6 rounded-3xl border border-white/60 bg-white/80 p-8 shadow-xl backdrop-blur">
+      <div className="space-y-2 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Welcome back</p>
+        <h1 className="text-3xl font-semibold text-slate-900">Sign in to CityQuest</h1>
+        <p className="text-sm text-slate-600">Use one of the demo accounts or your own email to continue exploring.</p>
+      </div>
+      <form className="space-y-5" onSubmit={handleSubmit}>
         <div className="space-y-2">
-          <label className="text-sm font-medium" htmlFor="email">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500" htmlFor="email">
             Email
           </label>
-          <Input id="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+            placeholder="you@example.com"
+          />
         </div>
         <Button type="submit" className="w-full">
           Continue
         </Button>
       </form>
+      <div className="rounded-2xl border border-white/60 bg-white/70 p-4 text-xs text-slate-500">
+        Try `tourist@demo.app`, `biz@demo.app`, or `admin@demo.app` to jump into different roles instantly.
+      </div>
     </div>
   );
 }

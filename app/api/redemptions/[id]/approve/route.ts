@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { requireRole } from '@/lib/auth';
-import { getStore, updateRedemptionStatus } from '@/lib/store';
+import { updateRedemptionStatus } from '@/lib/store';
 
 export async function POST(request: Request, { params }: { params: { id: string } }) {
   await requireRole('business');

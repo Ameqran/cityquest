@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -17,7 +18,13 @@ export function QRPreview({ text }: QRPreviewProps) {
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      {dataUrl ? <img src={dataUrl} alt="QR code" className="h-48 w-48 rounded-lg border bg-white p-4" /> : null}
+      {dataUrl ? (
+        <img
+          src={dataUrl}
+          alt="QR code"
+          className="h-48 w-48 rounded-3xl border border-white/60 bg-white/90 p-4 shadow-lg backdrop-blur"
+        />
+      ) : null}
       {dataUrl ? (
         <Button
           onClick={() => {

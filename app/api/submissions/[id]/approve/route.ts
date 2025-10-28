@@ -4,7 +4,7 @@ import { getStore, updateSubmissionStatus } from '@/lib/store';
 import { updatePointsAndStreak } from '@/lib/gamification';
 
 export async function POST(request: Request, { params }: { params: { id: string } }) {
-  const user = await requireRole(['business', 'admin']);
+  await requireRole(['business', 'admin']);
   const store = getStore();
   const submission = store.submissions.find((sub) => sub.id === params.id);
   if (!submission) return NextResponse.json({ error: 'Not found' }, { status: 404 });

@@ -12,24 +12,50 @@ export default async function LandingPage({ params }: { params: { locale: string
   const featuredCity = cities[0];
 
   return (
-    <div className="space-y-12">
-      <section className="grid gap-6 rounded-3xl bg-gradient-to-r from-primary/10 via-secondary/40 to-background p-10">
-        <div className="space-y-4">
-          <p className="text-sm font-semibold uppercase tracking-wide text-primary">CityQuests</p>
-          <h1 className="text-4xl font-bold md:text-5xl">{t('heroTitle')}</h1>
-          <p className="max-w-2xl text-lg text-muted-foreground">{t('heroSubtitle')}</p>
-          <div className="flex flex-wrap gap-3">
-            <Link href={`/${params.locale}/missions`} className="inline-flex rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground">
-              {t('cta')}
-            </Link>
-            <span className="rounded-full bg-muted px-4 py-2 text-sm text-muted-foreground">{t('dailyMissions')}</span>
+    <div className="space-y-12 md:space-y-16">
+      <section className="relative overflow-hidden rounded-3xl border border-white/50 bg-white/80 p-10 shadow-xl backdrop-blur md:p-14">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-pink-500/10" aria-hidden />
+        <div className="grid gap-10 md:grid-cols-[1.2fr,0.8fr] md:items-center">
+          <div className="relative z-10 space-y-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-600">CityQuest</p>
+            <h1 className="text-4xl font-bold text-slate-900 md:text-5xl">
+              <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 bg-clip-text text-transparent">
+                {t('heroTitle')}
+              </span>
+            </h1>
+            <p className="max-w-2xl text-lg text-slate-600">{t('heroSubtitle')}</p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href={`/${params.locale}/missions`}
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl"
+              >
+                {t('cta')}
+              </Link>
+              <span className="inline-flex items-center rounded-full bg-white/70 px-6 py-3 text-sm font-semibold text-purple-600 shadow-sm">
+                {t('dailyMissions')}
+              </span>
+            </div>
+          </div>
+          <div className="relative z-10">
+            {activeSeason ? <SeasonBanner season={activeSeason} /> : null}
           </div>
         </div>
-        {activeSeason ? <SeasonBanner season={activeSeason} /> : null}
       </section>
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Featured missions</h2>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 bg-clip-text text-transparent">
+              Featured missions
+            </span>
+          </h2>
+          <Link
+            href={`/${params.locale}/missions`}
+            className="hidden text-sm font-semibold text-purple-600 transition hover:text-purple-700 md:inline-flex"
+          >
+            See all missions →
+          </Link>
+        </div>
+        <div className="grid gap-7 md:grid-cols-3">
           {featuredMissions.map((mission) => (
             <MissionCard
               key={mission.id}
@@ -40,9 +66,14 @@ export default async function LandingPage({ params }: { params: { locale: string
           ))}
         </div>
       </section>
-      <section className="rounded-2xl border bg-card p-8 shadow-sm">
-        <h2 className="text-2xl font-semibold">Why {featuredCity.name}?</h2>
-        <p className="mt-2 text-muted-foreground">{featuredCity.description}</p>
+      <section className="relative overflow-hidden rounded-3xl border border-white/50 bg-white/80 p-10 shadow-lg backdrop-blur">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-sky-500/10" aria-hidden />
+        <div className="relative z-10 space-y-4">
+          <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
+            Why {featuredCity.name}?
+          </h2>
+          <p className="max-w-2xl text-slate-600">{featuredCity.description}</p>
+        </div>
       </section>
     </div>
   );

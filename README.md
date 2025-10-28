@@ -43,9 +43,12 @@ The data resets on every server restart, making it easy to test scenarios. Enjoy
 
 ## GitHub Pages deployment
 
-This repository ships with a GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) that
-builds a static export of the application and deploys it to GitHub Pages whenever changes are pushed
-to the `main` branch. The workflow sets the `STATIC_EXPORT` flag to generate an exportable build and
-automatically detects the repository name to use as the base path. Dynamic features that depend on
-server actions or API routes are limited in this export, but the static build provides an easy way to
-preview the marketing experience.
+This repository ships with a GitHub Actions workflow (`.github/workflows/deploy.yml`) that builds a static export and pushes it to the `gh-pages`
+branch using the widely adopted `peaceiris/actions-gh-pages` action. To publish the site:
+
+1. Push the project to GitHub and enable GitHub Pages with the **Deploy from a branch** option, selecting the `gh-pages` branch and `/ (root)` folder.
+2. Push to `main` (or trigger the workflow manually from the Actions tab). The workflow runs `pnpm build:static`, which writes the static export to `out/`
+   and publishes that folder to `gh-pages`.
+
+The build automatically configures the correct `basePath` and `assetPrefix` based on the repository name, so assets resolve correctly on Pages.
+Note that server-side features are limited in the static export, but it’s ideal for the marketing/demonstration experience.

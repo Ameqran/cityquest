@@ -1,8 +1,11 @@
+import { getTranslations } from 'next-intl/server';
 import { getCurrentUser } from '@/lib/auth';
 import { getStore, createRedemption, adjustRewardStock } from '@/lib/store';
 import { RewardCard } from '@/components/RewardCard';
+import { PointsWallet } from '@/components/PointsWallet';
 
 export default async function RewardsPage() {
+  const t = await getTranslations('rewards');
   const store = getStore();
   const user = await getCurrentUser();
 
@@ -19,18 +22,33 @@ export default async function RewardsPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-semibold">Rewards</h1>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div className="space-y-10">
+      <div className="space-y-4">
+        <h1 className="text-3xl font-semibold text-slate-900 md:text-4xl">
+          <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 bg-clip-text text-transparent">
+            {t('title')}
+          </span>
+        </h1>
+        <p className="max-w-3xl text-sm text-slate-600 md:text-base">{t('subtitle')}</p>
+      </div>
+      {user ? <PointsWallet totalPoints={user.totalPoints} streak={user.streakCount} badges={user.badges} /> : null}
+      <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
         {store.rewards.map((reward) => {
           const business = store.businesses.find((biz) => biz.id === reward.businessId);
+          const userPoints = user?.totalPoints ?? 0;
+          const missingPoints = Math.max(0, reward.costPoints - userPoints);
+          const insufficientLabel = t('insufficient', { points: missingPoints });
           return (
-            <form key={reward.id} action={redeemReward}>
+            <form key={reward.id} action={redeemReward} className="flex h-full flex-col">
               <input type="hidden" name="rewardId" value={reward.id} />
-              <RewardCard reward={reward} userPoints={user?.totalPoints ?? 0} businessName={business?.name} />
-              <button type="submit" className="mt-2 w-full rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-                Redeem via server action
-              </button>
+              <RewardCard
+                reward={reward}
+                userPoints={userPoints}
+                businessName={business?.name}
+                ctaLabel={t('redeem')}
+                insufficientLabel={insufficientLabel}
+                soldOutLabel={t('soldOut')}
+              />
             </form>
           );
         })}

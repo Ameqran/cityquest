@@ -3,6 +3,8 @@ import { getStore } from '@/lib/store';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { randomUUID } from 'crypto';
+import { Badge } from '@/components/ui/badge';
+import { CalendarDays } from 'lucide-react';
 
 export default async function AdminSeasonsPage() {
   await requireRole('admin');
@@ -24,17 +26,45 @@ export default async function AdminSeasonsPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-semibold">Seasons</h1>
-      <form action={addSeason} className="flex gap-3">
-        <Input name="name" placeholder="Season name" required />
-        <Button type="submit">Add season</Button>
+    <div className="space-y-8">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 className="text-3xl font-semibold text-slate-900 md:text-4xl">
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 bg-clip-text text-transparent">
+              Seasonal campaigns
+            </span>
+          </h1>
+          <p className="mt-2 text-sm text-slate-600 md:text-base">
+            Launch new events to spotlight city festivals and guide explorers toward limited-time missions.
+          </p>
+        </div>
+        <Badge variant="secondary" className="tracking-normal">
+          {store.seasons.length} active
+        </Badge>
+      </div>
+      <form
+        action={addSeason}
+        className="flex flex-col gap-3 rounded-full border border-white/60 bg-white/70 p-3 shadow-sm backdrop-blur md:flex-row md:items-center"
+      >
+        <Input name="name" placeholder="Season name" required className="bg-white/0" />
+        <Button type="submit" className="md:min-w-[160px]">
+          Add season
+        </Button>
       </form>
-      <ul className="space-y-3">
+      <ul className="grid gap-3 md:grid-cols-2">
         {store.seasons.map((season) => (
-          <li key={season.id} className="rounded-xl border bg-card p-4 text-sm">
-            <p className="font-semibold">{season.name}</p>
-            <p className="text-muted-foreground">{season.description}</p>
+          <li
+            key={season.id}
+            className="rounded-3xl border border-white/60 bg-white/80 p-5 text-sm shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-slate-900">{season.name}</p>
+              <Badge variant="default" className="tracking-normal">
+                <CalendarDays className="mr-1 h-3.5 w-3.5" />
+                {season.startAt.toLocaleDateString()}
+              </Badge>
+            </div>
+            <p className="mt-1 text-xs text-slate-600">{season.description}</p>
           </li>
         ))}
       </ul>

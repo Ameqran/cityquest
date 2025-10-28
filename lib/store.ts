@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { addDays, isSameDay, subDays } from 'date-fns';
-import {
+import type {
   Badge,
   City,
   LeaderboardEntry,

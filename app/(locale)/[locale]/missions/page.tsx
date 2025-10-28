@@ -25,10 +25,26 @@ export default function MissionsPage({
   });
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-semibold">Missions</h1>
-      <form className="grid gap-4 rounded-xl border bg-card p-6 shadow-sm md:grid-cols-4">
-        <Select name="city" defaultValue={city ?? ''}>
+    <div className="space-y-10">
+      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h1 className="text-3xl font-semibold text-slate-900 md:text-4xl">
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 bg-clip-text text-transparent">
+              Missions
+            </span>
+          </h1>
+          <p className="mt-2 max-w-xl text-sm text-slate-600 md:text-base">
+            Fine-tune the challenges to match your mood and discover partner rewards tailored to each quest.
+          </p>
+        </div>
+        <p className="text-sm font-medium text-purple-700 md:text-base">{missions.length} missions available</p>
+      </div>
+      <form className="grid gap-4 rounded-3xl border border-white/50 bg-white/80 p-6 shadow-lg backdrop-blur md:grid-cols-4">
+        <Select
+          name="city"
+          defaultValue={city ?? ''}
+          className="border-white/50 bg-white/90 text-sm font-medium text-slate-700"
+        >
           <option value="">All cities</option>
           {store.cities.map((c) => (
             <option key={c.id} value={c.id}>
@@ -36,7 +52,11 @@ export default function MissionsPage({
             </option>
           ))}
         </Select>
-        <Select name="category" defaultValue={category ?? ''}>
+        <Select
+          name="category"
+          defaultValue={category ?? ''}
+          className="border-white/50 bg-white/90 text-sm font-medium text-slate-700"
+        >
           <option value="">All categories</option>
           {store.categories.map((c) => (
             <option key={c.slug} value={c.slug}>
@@ -44,18 +64,30 @@ export default function MissionsPage({
             </option>
           ))}
         </Select>
-        <Select name="tier" defaultValue={tier ?? ''}>
+        <Select
+          name="tier"
+          defaultValue={tier ?? ''}
+          className="border-white/50 bg-white/90 text-sm font-medium text-slate-700"
+        >
           <option value="">All tiers</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </Select>
-        <Input name="q" defaultValue={search ?? ''} placeholder="Search" />
-        <button type="submit" className="col-span-full rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+        <Input
+          name="q"
+          defaultValue={search ?? ''}
+          placeholder="Search missions"
+          className="border-white/50 bg-white/90 text-sm font-medium text-slate-700 placeholder:text-slate-400"
+        />
+        <button
+          type="submit"
+          className="col-span-full rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-purple-500 px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl"
+        >
           Filter
         </button>
       </form>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
         {missions.map((mission) => (
           <MissionCard
             key={mission.id}

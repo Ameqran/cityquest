@@ -37,38 +37,62 @@ export function ProofDialog({ missionId }: ProofDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="secondary">Submit proof</Button>
+        <Button variant="secondary" className="px-6">
+          Submit proof
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Mission proof</DialogTitle>
-          <DialogDescription>Simulate GPS or QR check-in</DialogDescription>
+          <DialogTitle className="text-2xl font-semibold text-slate-900">Mission proof</DialogTitle>
+          <DialogDescription className="text-slate-600">
+            Simulate your check-in method and share a quick note with the CityQuest crew.
+          </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4">
+        <div className="space-y-5">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Check-in type</label>
-            <div className="flex space-x-2">
-              <Button variant={checkinType === 'gps' ? 'default' : 'outline'} onClick={() => setCheckinType('gps')}>
+            <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">Check-in type</label>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant={checkinType === 'gps' ? 'default' : 'outline'}
+                onClick={() => setCheckinType('gps')}
+              >
                 GPS
               </Button>
-              <Button variant={checkinType === 'qr' ? 'default' : 'outline'} onClick={() => setCheckinType('qr')}>
+              <Button
+                type="button"
+                variant={checkinType === 'qr' ? 'default' : 'outline'}
+                onClick={() => setCheckinType('qr')}
+              >
                 QR code
               </Button>
             </div>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium" htmlFor="notes">
+            <label className="text-xs font-semibold uppercase tracking-wide text-slate-500" htmlFor="notes">
               Notes
             </label>
-            <Input id="notes" value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="Share your experience" />
+            <Input
+              id="notes"
+              value={notes}
+              onChange={(event) => setNotes(event.target.value)}
+              placeholder="Share your experience"
+            />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium" htmlFor="photo">
+            <label className="text-xs font-semibold uppercase tracking-wide text-slate-500" htmlFor="photo">
               Photo URL
             </label>
-            <Input id="photo" value={photoUrl} onChange={(event) => setPhotoUrl(event.target.value)} placeholder="Paste an image URL (optional)" />
+            <Input
+              id="photo"
+              value={photoUrl}
+              onChange={(event) => setPhotoUrl(event.target.value)}
+              placeholder="Paste an image URL (optional)"
+            />
           </div>
-          <Button onClick={submitProof}>Submit</Button>
+          <Button className="w-full" onClick={submitProof}>
+            Submit proof
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

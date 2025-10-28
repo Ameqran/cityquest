@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { Role } from '@/lib/models';
+import type { ReactNode } from 'react';
+import type { Role } from '@/lib/models';
 import { getCurrentUser } from '@/lib/auth';
 
 interface RoleGuardProps {

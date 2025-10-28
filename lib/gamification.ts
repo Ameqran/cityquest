@@ -1,5 +1,5 @@
 import { addDays, differenceInCalendarDays } from 'date-fns';
-import { Badge, Mission, Submission, User } from './models';
+import type { Badge, Mission, Submission, User } from './models';
 import { dailyCompletionCount, getStore, updateLeaderboard } from './store';
 
 export function canCompleteDaily(user: User, mission: Mission, date = new Date()) {
